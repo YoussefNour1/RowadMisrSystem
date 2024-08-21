@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RowadMisrSystem", "RowadMisrSystem\RowadMisrSystem.csproj", "{370865A7-B770-4923-A783-CC8343E0064C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{370865A7-B770-4923-A783-CC8343E0064C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370865A7-B770-4923-A783-CC8343E0064C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370865A7-B770-4923-A783-CC8343E0064C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370865A7-B770-4923-A783-CC8343E0064C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46372EF6-A05C-45DB-92C8-4007CA95F1C0}
+	EndGlobalSection
+EndGlobal
