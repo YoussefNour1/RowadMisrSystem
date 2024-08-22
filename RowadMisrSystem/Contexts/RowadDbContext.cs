@@ -8,8 +8,8 @@ namespace RowadMisrSystem.Contexts
         public DbSet<Trainee> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CrsResult> CrsResults { get; set; }
-        public DbSet<CrsResult> Instructors { get; set; }
-        public DbSet<CrsResult> Departments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

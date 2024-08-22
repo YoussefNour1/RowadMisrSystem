@@ -61,7 +61,7 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("CrsResult");
+                    b.ToTable("CrsResults");
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Department", b =>
@@ -81,16 +81,16 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Instructor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("InstructorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstructorId"), 1L, 1);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -105,11 +105,11 @@ namespace RowadMisrSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("InstructorId");
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Instructor");
+                    b.ToTable("Instructors");
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Trainee", b =>

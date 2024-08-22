@@ -9,7 +9,7 @@ namespace RowadMisrSystem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Department",
+                name: "Departments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -19,14 +19,14 @@ namespace RowadMisrSystem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Department", x => x.Id);
+                    table.PrimaryKey("PK_Departments", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Instructor",
+                name: "Instructors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    InstructorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -35,11 +35,11 @@ namespace RowadMisrSystem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Instructor", x => x.Id);
+                    table.PrimaryKey("PK_Instructors", x => x.InstructorId);
                     table.ForeignKey(
-                        name: "FK_Instructor_Department_DepartmentId",
+                        name: "FK_Instructors_Departments_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Department",
+                        principalTable: "Departments",
                         principalColumn: "Id");
                 });
 
@@ -59,9 +59,9 @@ namespace RowadMisrSystem.Migrations
                 {
                     table.PrimaryKey("PK_Students", x => x.TraineeId);
                     table.ForeignKey(
-                        name: "FK_Students_Department_DepartmentId",
+                        name: "FK_Students_Departments_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Department",
+                        principalTable: "Departments",
                         principalColumn: "Id");
                 });
 
@@ -78,19 +78,19 @@ namespace RowadMisrSystem.Migrations
                 {
                     table.PrimaryKey("PK_Courses", x => x.CourseId);
                     table.ForeignKey(
-                        name: "FK_Courses_Department_DeptartmentId",
+                        name: "FK_Courses_Departments_DeptartmentId",
                         column: x => x.DeptartmentId,
-                        principalTable: "Department",
+                        principalTable: "Departments",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Courses_Instructor_InstructorId",
+                        name: "FK_Courses_Instructors_InstructorId",
                         column: x => x.InstructorId,
-                        principalTable: "Instructor",
-                        principalColumn: "Id");
+                        principalTable: "Instructors",
+                        principalColumn: "InstructorId");
                 });
 
             migrationBuilder.CreateTable(
-                name: "CrsResult",
+                name: "CrsResults",
                 columns: table => new
                 {
                     TraineeId = table.Column<int>(type: "int", nullable: false),
@@ -99,15 +99,15 @@ namespace RowadMisrSystem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CrsResult", x => new { x.TraineeId, x.CourseId });
+                    table.PrimaryKey("PK_CrsResults", x => new { x.TraineeId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_CrsResult_Courses_CourseId",
+                        name: "FK_CrsResults_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "CourseId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CrsResult_Students_TraineeId",
+                        name: "FK_CrsResults_Students_TraineeId",
                         column: x => x.TraineeId,
                         principalTable: "Students",
                         principalColumn: "TraineeId",
@@ -125,13 +125,13 @@ namespace RowadMisrSystem.Migrations
                 column: "InstructorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CrsResult_CourseId",
-                table: "CrsResult",
+                name: "IX_CrsResults_CourseId",
+                table: "CrsResults",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Instructor_DepartmentId",
-                table: "Instructor",
+                name: "IX_Instructors_DepartmentId",
+                table: "Instructors",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
@@ -143,7 +143,7 @@ namespace RowadMisrSystem.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CrsResult");
+                name: "CrsResults");
 
             migrationBuilder.DropTable(
                 name: "Courses");
@@ -152,10 +152,10 @@ namespace RowadMisrSystem.Migrations
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Instructor");
+                name: "Instructors");
 
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "Departments");
         }
     }
 }

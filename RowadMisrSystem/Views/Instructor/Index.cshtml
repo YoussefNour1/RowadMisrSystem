@@ -1,7 +1,12 @@
-﻿@model Instructor
+﻿@model List<Instructor>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Instructors";
 }
 
-<h1>Index</h1>
+<h1>All Instructors</h1>
+
+@foreach (var ins in Model)
+{
+    <p> @ins.InstructorId | @ins.Name </p>
+}
 
