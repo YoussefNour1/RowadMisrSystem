@@ -6,16 +6,16 @@ namespace RowadMisrSystem.Controllers;
 
 public class DepartmentController : Controller
 {
-    static RowadDbContext context = new RowadDbContext();
+    static readonly RowadDbContext Context = new ();
     public IActionResult Index()
     {
-        var departments = context.Departments.ToList();
+        var departments = Context.Departments.ToList();
         return View(departments);
     }
 
     public IActionResult Details(int Id)
     {
-        Department Dept = context.Departments.FirstOrDefault(d => d.Id == Id)?? new Department { Id = -1, Name="Annon", Manager=-1};
+        Department Dept = Context.Departments.FirstOrDefault(d => d.Id == Id);
         return View(Dept);
     }
 }

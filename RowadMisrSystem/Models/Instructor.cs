@@ -19,7 +19,5 @@ namespace RowadMisrSystem.Models
         public Department? Department { get; set; }
 
         public ICollection<Course> Courses { get; set; } = new HashSet<Course>();
-
-
     }
 }
