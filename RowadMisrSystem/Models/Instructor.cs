@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 namespace RowadMisrSystem.Models
 {
 
@@ -10,6 +11,8 @@ namespace RowadMisrSystem.Models
         [Required]
         [DisplayName("Instructor Name")]
         public string? Name { get; set; }
+        [AllowNull]
+        [DataType(DataType.ImageUrl)]
         public string? Image { get; set; }
         public string? Address { get; set; }
 

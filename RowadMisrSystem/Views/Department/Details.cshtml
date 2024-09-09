@@ -4,33 +4,117 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>View</h1>
-
-<div>
-    <h4>Department</h4>
+<div class="main" style="margin:20px; padding:20px">
+    <h4>Department Details</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Manager)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Manager)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (Model == null)
+    {
+        <div>
+            <center>
+                <h3>
+                    There is no department found
+                </h3>
+
+            </center>
+        </div>
+    }
+    else
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Manager
+            </dt>
+            <dd class="col-sm-10">
+                @if (ViewBag.Manager == null)
+                {
+                    <p>N/A</p>
+                }
+                else
+                {
+                    <a asp-controller="Instructor" asp-action="Details" asp-route-id="@ViewBag.Manager.InstructorId">@ViewBag.Manager.Name</a>
+                }
+            </dd>
+
+        </dl>
+        <hr />
+        <h2>
+            Instructors in this department
+        </h2>
+        <br />
+        <br />
+
+        @if (ViewBag.Instructors.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Instructor Name
+                        </th>
+                        <th>
+                            Instructor Image
+                        </th>
+                        <th>
+                            Address
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in (List<Instructor>)ViewBag.Instructors)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @if (item.Image != null)
+                                {
+                                    <img src="~/images/instructors/@item.Image" alt="Image" class="img-thumbnail" width="100px" height="100px" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/default.jpg" alt="Image" class="img-thumbnail" width="100px" height="100px" style="border-radius:20px" />
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.InstructorId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.InstructorId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.InstructorId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <center>
+                No Instructors in this department yet
+            </center>
+        }
+
+
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+
 </div>

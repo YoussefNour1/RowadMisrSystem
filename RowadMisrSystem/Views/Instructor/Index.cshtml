@@ -4,10 +4,12 @@
     ViewData["Title"] = "All Instructors";
 }
 
-<h1>View</h1>
+<main class="main" style="margin:30px">
+
+<h1>View All Instructors</h1>
 
 <p>
-    <a asp-action="Create">Add A new Instructor</a>
+    <a class="btn btn-outline-success" asp-action="New">Add A new Instructor</a>
 </p>
 <table class="table">
     <thead>
@@ -28,26 +30,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.InstructorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.InstructorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.InstructorId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @if (item.Image != null)
+                    {
+                        <img src="~/images/instructors/@item.Image" alt="Image" class="img-thumbnail" width="100px" height="100px"/>
+                    }
+                    else
+                    {
+                        <img src="~/images/default.jpg" alt="Image" class="img-thumbnail" width="100px" height="100px" style="border-radius:20px"/>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.InstructorId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.InstructorId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.InstructorId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+</main>

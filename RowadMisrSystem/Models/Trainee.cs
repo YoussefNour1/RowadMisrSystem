@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RowadMisrSystem.Models;
 
@@ -7,7 +8,7 @@ public class Trainee
     public int TraineeId { get; set; }
     [Required]
     public string? Name { get; set; }
-    [Required]
+    [AllowNull]
     public string? Image { get; set; }
     public string? Address { get; set; }
     public decimal Grade { get; set; }

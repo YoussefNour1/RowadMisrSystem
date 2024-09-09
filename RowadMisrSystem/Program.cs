@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using RowadMisrSystem.Contexts;
+using RowadMisrSystem.Extensions;
+using RowadMisrSystem.Interfaces;
+using RowadMisrSystem.Repositories;
+using RowadMisrSystem.Services;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddMvc(); 
-
+builder.Services.AddMvc();
+builder.Services.AddDbContext<RowadDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddServicesAndRepositories();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

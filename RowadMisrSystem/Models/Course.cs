@@ -10,8 +10,8 @@ namespace RowadMisrSystem.Models
         public int CourseId { get; set; }
         [Required]
         public string Title { get; set; }
-        public int? DeptartmentId { get; set; }
-        public Department? Deptartment { get; set; }
+        public int? DepartmentId { get; set; }
+        public Department? Department { get; set; }
         public ICollection<CrsResult>? CrsResults { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasIndex("InstructorId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.CrsResult", b =>
@@ -61,7 +61,7 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("CrsResults");
+                    b.ToTable("CrsResults", (string)null);
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Department", b =>
@@ -81,7 +81,7 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Instructor", b =>
@@ -109,7 +109,7 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Instructors");
+                    b.ToTable("Instructors", (string)null);
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Trainee", b =>
@@ -141,7 +141,7 @@ namespace RowadMisrSystem.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("RowadMisrSystem.Models.Course", b =>

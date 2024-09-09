@@ -3,11 +3,13 @@
 @{
     ViewData["Title"] = "All Departments";
 }
+<div class="container-md" style="padding:20px">
+
 
 <h1>Existing Departments</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Add New Department</a>
+    <a asp-controller="Department" asp-action="New" class="btn btn-primary">Add New Department</a>
 </p>
 <table class="table">
     <thead>
@@ -37,3 +39,4 @@
 }
     </tbody>
 </table>
+</div>
